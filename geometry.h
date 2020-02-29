@@ -1,6 +1,6 @@
 typedef struct Point{
-	double x;
-	double y;
+	int x;
+	int y;
 }Point;
 
 typedef struct Circle{
@@ -9,8 +9,8 @@ typedef struct Circle{
 }Circle;
 
 typedef struct Triangle{
-	Point first;
-	Point second;
-	Point third;
-	Point fourth;
+	Point a;
+	Point b;
+	Point c;
+	Point check;
 }Triangle;
