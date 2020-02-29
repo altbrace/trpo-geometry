@@ -1,10 +1,19 @@
 #include <stdio.h>
 #include <math.h>
-#include <geometry.h>
+#include "geometry.h"
+#include <stdbool.h>
 
 double length(Point first, Point second){
 	double l = sqrt(sqr(second.x-first.x)+sqr(second.y-first.y));
 	return l;
+}
+
+bool isTriangle(Triangle tri){
+	double ab = length(tri.a, tri.b);
+	double bc = length(tri.b, tri.c);
+	double ac = length(tri.a, tri.c);
+	if (ab < bc+ac && bc < ac+ab && ac < ab+bc) return true;
+	return false;
 }
 
 double triPeri(Triangle tri){
