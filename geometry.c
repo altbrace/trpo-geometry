@@ -3,6 +3,10 @@
 #include "geometry.h"
 #include <stdbool.h>
 
+double sqr(double x){
+	return pow(x, 2);
+}
+
 double length(Point first, Point second){
 	double l = sqrt(sqr(second.x-first.x)+sqr(second.y-first.y));
 	return l;

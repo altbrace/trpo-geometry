@@ -25,6 +25,7 @@ double triPeri(Triangle tri);
 double triArea(Triangle tri);
 double circlePeri(Circle circle);
 double circleArea(Circle circle);
+double sqr(double x);
 
 #endif
 
