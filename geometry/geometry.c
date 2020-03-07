@@ -59,6 +59,7 @@ double circleArea(Circle circle)
 
 bool isCircle(Circle circle)
 {
-    if (circle.radius <= 0) return false;
+    if (circle.radius <= 0)
+        return false;
     return true;
 }

@@ -48,8 +48,7 @@ int main()
             printf("Error: invalid circle\n");
             return -1;
         }
-        if (!isCircle(circle))
-	{
+        if (!isCircle(circle)) {
             printf("Error: invalid circle\n");
             return -1;
         }
