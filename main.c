@@ -6,24 +6,22 @@
 #include "geometry.h"
 
 int main(){
-	char input[30];
-	char* delim = "( ,";
+	char input[40];
+	char* parser;
+	char* delim = "() ,";
 	printf("Input WKT-like geometry:\n");
-	scanf("%s", input);
-	char* parser = strtok(input, delim);
-	printf("%s", parser);
+	fgets(input, 40, stdin);
+	parser = strtok(input, delim);
 	if (strcmp(parser, "circle") == 0){
-		printf("\n");
 		Circle circle;
 		parser = strtok(NULL, delim);
-	//	circle.center.x = atoi(parser[0]);
-	//	circle.center.y = atoi(parser[3]);
-		printf("%s", parser);
+		circle.center.x = atoi(parser);
 		parser = strtok(NULL, delim);
-		printf("%s", parser);
-		
-		printf("%s", parser);
+		circle.center.y = atoi(parser);
 		parser = strtok(NULL, delim);
+		circle.radius = atof(parser);
 	}
 	return 0;
+
+
 }
