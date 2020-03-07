@@ -16,7 +16,11 @@ bool isTriangle(Triangle tri){
 	double ab = length(tri.a, tri.b);
 	double bc = length(tri.b, tri.c);
 	double ac = length(tri.a, tri.c);
-	if (ab < bc+ac && bc < ac+ab && ac < ab+bc) return true;
+	int x = tri.a.x;
+	int y = tri.a.y;
+	int x1 = tri.check.x;
+	int y1 = tri.check.y;
+	if (ab < bc+ac && bc < ac+ab && ac < ab+bc && x == x1 && y ==y1) return true;
 	return false;
 }
 
