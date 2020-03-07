@@ -57,3 +57,8 @@ double circleArea(Circle circle)
     return sqr(circle.radius) * M_PI;
 }
 
+bool isCircle(Circle circle)
+{
+    if (circle.radius <= 0) return false;
+    return true;
+}

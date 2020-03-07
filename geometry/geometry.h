@@ -21,6 +21,7 @@ typedef struct Triangle{
 }Triangle;
 double length(Point first, Point second);
 bool isTriangle(Triangle tri);
+bool isCircle(Circle circle);
 double triPeri(Triangle tri);
 double triArea(Triangle tri);
 double circlePeri(Circle circle);

@@ -48,7 +48,11 @@ int main()
             printf("Error: invalid circle\n");
             return -1;
         }
-
+        if (!isCircle(circle))
+	{
+            printf("Error: invalid circle\n");
+            return -1;
+        }
         printf("Perimeter: %.2f\n", circlePeri(circle));
         printf("Area: %.2f\n", circleArea(circle));
     } else if (strcmp(parser, "triangle") == 0) {
