@@ -4,8 +4,8 @@
 #define GEOMETRY_H
 
 typedef struct Point{
-	int x;
-	int y;
+	double x;
+	double y;
 }Point;
 
 typedef struct Circle{

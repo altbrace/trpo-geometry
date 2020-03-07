@@ -16,18 +16,16 @@ char* _input()
 int main()
 {
     char* input;
-    char input_copy[40];
     char* parser;
     char* delim = "() ,";
     input = _input();
-    strcpy(input_copy, input);
     parser = strtok(input, delim);
     if (strcmp(parser, "circle") == 0) {
         Circle circle;
         parser = strtok(NULL, delim);
 
         if (parser != NULL)
-            circle.center.x = atoi(parser);
+            circle.center.x = atof(parser);
         else {
             printf("Error: invalid circle\n");
             return -1;
@@ -35,7 +33,7 @@ int main()
 
         parser = strtok(NULL, delim);
         if (parser != NULL)
-            circle.center.y = atoi(parser);
+            circle.center.y = atof(parser);
         else {
             printf("Error: invalid circle\n");
             return -1;
@@ -58,7 +56,7 @@ int main()
         Triangle tri;
         parser = strtok(NULL, delim);
         if (parser != NULL)
-            tri.a.x = atoi(parser);
+            tri.a.x = atof(parser);
         else {
             printf("Error: invalid triangle\n");
             return -1;
@@ -66,7 +64,7 @@ int main()
 
         parser = strtok(NULL, delim);
         if (parser != NULL)
-            tri.a.y = atoi(parser);
+            tri.a.y = atof(parser);
         else {
             printf("Error: invalid triangle\n");
             return -1;
@@ -74,7 +72,7 @@ int main()
 
         parser = strtok(NULL, delim);
         if (parser != NULL)
-            tri.b.x = atoi(parser);
+            tri.b.x = atof(parser);
         else {
             printf("Error: invalid triangle\n");
             return -1;
@@ -82,7 +80,7 @@ int main()
 
         parser = strtok(NULL, delim);
         if (parser != NULL)
-            tri.b.y = atoi(parser);
+            tri.b.y = atof(parser);
         else {
             printf("Error: invalid triangle\n");
             return -1;
@@ -90,7 +88,7 @@ int main()
 
         parser = strtok(NULL, delim);
         if (parser != NULL)
-            tri.c.x = atoi(parser);
+            tri.c.x = atof(parser);
         else {
             printf("Error: invalid triangle\n");
             return -1;
@@ -98,7 +96,7 @@ int main()
 
         parser = strtok(NULL, delim);
         if (parser != NULL)
-            tri.c.y = atoi(parser);
+            tri.c.y = atof(parser);
         else {
             printf("Error: invalid triangle\n");
             return -1;
@@ -106,7 +104,7 @@ int main()
 
         parser = strtok(NULL, delim);
         if (parser != NULL)
-            tri.check.x = atoi(parser);
+            tri.check.x = atof(parser);
         else {
             printf("Error: invalid triangle\n");
             return -1;
@@ -114,7 +112,7 @@ int main()
 
         parser = strtok(NULL, delim);
         if (parser != NULL)
-            tri.check.y = atoi(parser);
+            tri.check.y = atof(parser);
         else {
             printf("Error: invalid triangle\n");
             return -1;
@@ -126,6 +124,6 @@ int main()
         } else
             printf("Error: invalid triangle\n");
     } else
-        printf("Error: unknown shape '%s'", parser);
+        printf("Error: unknown shape '%s'\n", parser);
     return 0;
 }
