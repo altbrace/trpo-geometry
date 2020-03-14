@@ -17,10 +17,16 @@ int main()
 {
     char* figure;
     char* lexeme;
+    char backup[40];
     char* delim = "() ,";
     figure = input();
+    strcpy(backup, figure);
     lexeme = strtok(figure, delim);
     if (strcmp(lexeme, "circle") == 0) {
+	if (backup[6] != '(' || backup[strlen(backup)-2] != ')'){
+		printf("Error: invalid circle\n");
+		return -1;
+	}
         Circle circle;
         lexeme = strtok(NULL, delim);
         if (lexeme != NULL)
