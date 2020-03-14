@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-char* _input()
+char* input()
 {
     char* input = malloc(sizeof(char) * 40);
     printf("Input WKT-like geometry:\n");
@@ -15,33 +15,32 @@ char* _input()
 
 int main()
 {
-    char* input;
-    char* parser;
+    char* figure;
+    char* lexeme;
     char* delim = "() ,";
-    input = _input();
-    parser = strtok(input, delim);
-    if (strcmp(parser, "circle") == 0) {
+    figure = input();
+    lexeme = strtok(figure, delim);
+    if (strcmp(lexeme, "circle") == 0) {
         Circle circle;
-        parser = strtok(NULL, delim);
-
-        if (parser != NULL)
-            circle.center.x = atof(parser);
+        lexeme = strtok(NULL, delim);
+        if (lexeme != NULL)
+            circle.center.x = atof(lexeme);
         else {
             printf("Error: invalid circle\n");
             return -1;
         }
 
-        parser = strtok(NULL, delim);
-        if (parser != NULL)
-            circle.center.y = atof(parser);
+        lexeme = strtok(NULL, delim);
+        if (lexeme != NULL)
+            circle.center.y = atof(lexeme);
         else {
             printf("Error: invalid circle\n");
             return -1;
         }
 
-        parser = strtok(NULL, delim);
-        if (parser != NULL)
-            circle.radius = atof(parser);
+        lexeme = strtok(NULL, delim);
+        if (lexeme != NULL)
+            circle.radius = atof(lexeme);
         else {
             printf("Error: invalid circle\n");
             return -1;
@@ -52,67 +51,67 @@ int main()
         }
         printf("Perimeter: %.2f\n", circlePeri(circle));
         printf("Area: %.2f\n", circleArea(circle));
-    } else if (strcmp(parser, "triangle") == 0) {
+    } else if (strcmp(lexeme, "triangle") == 0) {
         Triangle tri;
-        parser = strtok(NULL, delim);
-        if (parser != NULL)
-            tri.a.x = atof(parser);
+        lexeme = strtok(NULL, delim);
+        if (lexeme != NULL)
+            tri.a.x = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
             return -1;
         }
 
-        parser = strtok(NULL, delim);
-        if (parser != NULL)
-            tri.a.y = atof(parser);
+        lexeme = strtok(NULL, delim);
+        if (lexeme != NULL)
+            tri.a.y = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
             return -1;
         }
 
-        parser = strtok(NULL, delim);
-        if (parser != NULL)
-            tri.b.x = atof(parser);
+        lexeme = strtok(NULL, delim);
+        if (lexeme != NULL)
+            tri.b.x = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
             return -1;
         }
 
-        parser = strtok(NULL, delim);
-        if (parser != NULL)
-            tri.b.y = atof(parser);
+        lexeme = strtok(NULL, delim);
+        if (lexeme != NULL)
+            tri.b.y = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
             return -1;
         }
 
-        parser = strtok(NULL, delim);
-        if (parser != NULL)
-            tri.c.x = atof(parser);
+        lexeme = strtok(NULL, delim);
+        if (lexeme != NULL)
+            tri.c.x = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
             return -1;
         }
 
-        parser = strtok(NULL, delim);
-        if (parser != NULL)
-            tri.c.y = atof(parser);
+        lexeme = strtok(NULL, delim);
+        if (lexeme != NULL)
+            tri.c.y = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
             return -1;
         }
 
-        parser = strtok(NULL, delim);
-        if (parser != NULL)
-            tri.check.x = atof(parser);
+        lexeme = strtok(NULL, delim);
+        if (lexeme != NULL)
+            tri.check.x = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
             return -1;
         }
 
-        parser = strtok(NULL, delim);
-        if (parser != NULL)
-            tri.check.y = atof(parser);
+        lexeme = strtok(NULL, delim);
+        if (lexeme != NULL)
+            tri.check.y = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
             return -1;
@@ -124,6 +123,6 @@ int main()
         } else
             printf("Error: invalid triangle\n");
     } else
-        printf("Error: unknown shape '%s'\n", parser);
+        printf("Error: unknown shape '%s'\n", lexeme);
     return 0;
 }
