@@ -1,6 +1,7 @@
 #include "geometry.h"
 #include <math.h>
 #include <stdbool.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,6 +12,18 @@ char* input()
     printf("Input WKT-like geometry:\n");
     fgets(input, 40, stdin);
     return input;
+}
+
+bool isNumber(char* string){
+	int ln = strlen(string);
+	if (string[0] == '.' || string[ln-1] == '.') return false;
+	if (string[ln] == '\n') string[ln] = '\0';
+	for (int i=0; i<ln; i++){
+		if (!isdigit(string[i]) && string[i] != '.'){
+			return false;
+		}
+	}
+	return true;
 }
 
 int main()
@@ -29,7 +42,7 @@ int main()
 	}
         Circle circle;
         lexeme = strtok(NULL, delim);
-        if (lexeme != NULL)
+        if (lexeme != NULL && isNumber(lexeme))
             circle.center.x = atof(lexeme);
         else {
             printf("Error: invalid circle\n");
@@ -37,7 +50,7 @@ int main()
         }
 
         lexeme = strtok(NULL, delim);
-        if (lexeme != NULL)
+        if (lexeme != NULL && isNumber(lexeme))
             circle.center.y = atof(lexeme);
         else {
             printf("Error: invalid circle\n");
@@ -45,7 +58,7 @@ int main()
         }
 
         lexeme = strtok(NULL, delim);
-        if (lexeme != NULL)
+        if (lexeme != NULL && isNumber(lexeme))
             circle.radius = atof(lexeme);
         else {
             printf("Error: invalid circle\n");
@@ -57,10 +70,14 @@ int main()
         }
         printf("Perimeter: %.2f\n", circlePeri(circle));
         printf("Area: %.2f\n", circleArea(circle));
-    } else if (strcmp(lexeme, "triangle") == 0) {
+    } else if (strcmp(lexeme, "triangle") == 0) {	
+	if (backup[8] != '(' || backup[strlen(backup)-2] != ')'){
+		printf("Error: invalid triangle\n");
+		return -1;
+	}
         Triangle tri;
         lexeme = strtok(NULL, delim);
-        if (lexeme != NULL)
+        if (lexeme != NULL && isNumber(lexeme))
             tri.a.x = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
@@ -68,7 +85,7 @@ int main()
         }
 
         lexeme = strtok(NULL, delim);
-        if (lexeme != NULL)
+        if (lexeme != NULL && isNumber(lexeme))
             tri.a.y = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
@@ -76,7 +93,7 @@ int main()
         }
 
         lexeme = strtok(NULL, delim);
-        if (lexeme != NULL)
+        if (lexeme != NULL && isNumber(lexeme))
             tri.b.x = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
@@ -84,7 +101,7 @@ int main()
         }
 
         lexeme = strtok(NULL, delim);
-        if (lexeme != NULL)
+        if (lexeme != NULL && isNumber(lexeme))
             tri.b.y = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
@@ -92,7 +109,7 @@ int main()
         }
 
         lexeme = strtok(NULL, delim);
-        if (lexeme != NULL)
+        if (lexeme != NULL && isNumber(lexeme))
             tri.c.x = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
@@ -100,7 +117,7 @@ int main()
         }
 
         lexeme = strtok(NULL, delim);
-        if (lexeme != NULL)
+        if (lexeme != NULL && isNumber(lexeme))
             tri.c.y = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
@@ -108,7 +125,7 @@ int main()
         }
 
         lexeme = strtok(NULL, delim);
-        if (lexeme != NULL)
+        if (lexeme != NULL && isNumber(lexeme))
             tri.check.x = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
@@ -116,7 +133,7 @@ int main()
         }
 
         lexeme = strtok(NULL, delim);
-        if (lexeme != NULL)
+        if (lexeme != NULL && isNumber(lexeme))
             tri.check.y = atof(lexeme);
         else {
             printf("Error: invalid triangle\n");
