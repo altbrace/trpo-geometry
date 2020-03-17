@@ -16,14 +16,41 @@ char* input()
 
 bool isNumber(char* string){
 	int ln = strlen(string);
+  int s = 0;
+  int dots = 0;
+  int minus = 0;
+  int plus = 0;
+  int check = 0;
 	if (string[0] == '.' || string[ln-1] == '.') return false;
 	if (string[ln] == '\n') string[ln] = '\0';
-	for (int i=0; i<ln; i++){
-		if (!isdigit(string[i]) && string[i] != '.'){
-			return false;
-		}
-	}
-	return true;
+  for (int j=0; j<ln; j++){
+    if (string[j] == '.') dots++;
+  }
+  for (int j=0; j<ln; j++){
+    if (string[j] == '-') minus++;
+  }
+  for (int j=0; j<ln; j++){
+    if (string[j] == '+') plus++;
+  }
+  if (dots>1 || minus>1 || plus>1) return false;
+  if (string[0] == '-' || string[0] == '+') s = 1;
+	for (int i=s; i<ln; i++){
+		switch (string[i]){
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+      case '.': check++;
+    }
+  }
+  if ((s == 0 && check == ln) || (s == 1 && check == ln-1)) return true;
+	return false;
 }
 
 int main()
@@ -70,7 +97,7 @@ int main()
         }
         printf("Perimeter: %.2f\n", circlePeri(circle));
         printf("Area: %.2f\n", circleArea(circle));
-    } else if (strcmp(lexeme, "triangle") == 0) {	
+    } else if (strcmp(lexeme, "triangle") == 0) {
 	if (backup[8] != '(' || backup[strlen(backup)-2] != ')'){
 		printf("Error: invalid triangle\n");
 		return -1;
