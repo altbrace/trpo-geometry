@@ -53,13 +53,14 @@ bool isNumber(char* string){
 	return false;
 }
 
-int main()
+int main(int argc, char** argv)
 {
     char* figure;
     char* lexeme;
     char backup[40];
     char* delim = "() ,";
-    figure = input();
+    if (argc < 2) figure = input();
+    else figure = argv[1];
     strcpy(backup, figure);
     lexeme = strtok(figure, delim);
     if (strcmp(lexeme, "circle") == 0) {
